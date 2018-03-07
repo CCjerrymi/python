@@ -3,11 +3,11 @@
 1.调用函数时需要"import math"，函数放回多个参数是需要用list或者tuple接收
 
 2.python的高级特性
-	1)切片:L[0:3]从索引0开始到索引3为止，第1,2,3个元素
-		   L[-1:-2]倒数第1个到倒数第2个(倒数元素下表为负)
-	2)迭代:迭代模式与Js有一点相似，到那时有序python的特殊数据结构，需要特别处理
-	3)列表生成式(List Comprehensions):
-	4)生成器(generator)：
+	1）切片：L[0:3]从索引0开始到索引3为止，第1,2,3个元素
+		    L[-1:-2]倒数第1个到倒数第2个(倒数元素下表为负)
+	2）迭代:迭代模式与Js有一点相似，但是由于python的特殊数据结构，需要特别处理
+	3）列表生成式(List Comprehensions):
+	4）生成器(generator)：
 
 3.模块：涉及模块较多，更具需求进行查找使用
 
@@ -35,7 +35,36 @@
 	    注：type()支持动态创建类
 	9）metaclass:?????
 
+6.异常处理：
+	1）try...except...finally语句捕获异常
+	2）raise:抛出异常
+	3）配置logging日志记录文件对异常进行记录，方便调试程序
+
+7.代码调试：
+	1）使用断言(assert):assert n != 0,'n is zero!',表达式'n != 0'应该是True，否则更具程序的运行的逻辑，后面的代码肯定会出错。断言失败，语句本身抛出AssertionError。关闭断言：python -0 XXX.py
+	2）logging：配置logging后，可把信息输出到文件中去。到处logging模块后，配置'logging.basicConfig(level=logging.INFO)'指定需要输出的信息级别（debug，info，warning，error），指定其中一种后其他三种信息失效
+	3）pdb:启动python调试器，'python -m pdb err.py';输入'1'可查看代码;'n'单步执行代码;'p XXX'查看变量值;'q'结束调试，退出程序;设置断点'pdb.set_trace()'，输入'c'程序继续运行
+	4）单元测试：
+	5）文档测试：
+
+8.文件操作：
+	1）open('path')打开文件，close()关闭。引入with自动调用close()方法'with open('path') as f:print(f.read())'
+	2）对文件目录操作：在os模块中封装了对操作系统目录和文件的操作(有的函数在os中，有的在os.path中)
+
+9.进程和线程：
+	1）进程：Unix/Linux/Mac下支持fork(),Windows不支持，需要使用multiprocessing。需要使用大量进程是使用进程池Pool创建子进程
+	2）线程：
+	3）ThreadLocal：一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个函数之间互相传递的问题。
+
+		注：进程会把需要的数据copy一份，互不影响，而线程为数据共享
+			join():依次检验线程池中的线程是否结束，没有结束就阻塞到线程结束，结束则跳转执行下一个线程的join函数；可通过参数的形式设置阻塞时间
+
+10.数据结构：
+	1）dict："key:value"，Key和value对应，key不能重复
+
+
 常用知识点：
 	1）lambda表达式：
 	2）正则表达式：
+	3）packag中__init__.py：
 
